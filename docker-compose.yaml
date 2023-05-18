@@ -3,8 +3,8 @@ services:
 
   nodejs:
     build:
-      context: .
-      dockerfile: Dockerfile-nodejs
+      context: ./javascript/
+      dockerfile: Dockerfile
     ports:
       - 8001:8001
     volumes:
@@ -12,8 +12,8 @@ services:
 
   python:
     build:
-      context: .
-      dockerfile: Dockerfile-python
+      context: ./python/
+      dockerfile: Dockerfile
     ports:
       - 8002:8002
     volumes:
@@ -21,8 +21,8 @@ services:
 
   php:
     build:
-      context: .
-      dockerfile: Dockerfile-php
+      context: ./php/
+      dockerfile: Dockerfile
     ports:
       - 8003:8003
     volumes:
@@ -30,8 +30,8 @@ services:
 
   deno:
     build:
-      context: .
-      dockerfile: Dockerfile-deno
+      context: ./typescript/
+      dockerfile: Dockerfile
     ports:
       - 8004:8004
     volumes:

@@ -29,7 +29,7 @@ class Benchmark {
             },
             'sysinfo': {
                 'time': null,
-                'node_version': null,
+                'deno_version': null,
                 'platform': null,
                 'server_name': null,
             },
@@ -38,7 +38,7 @@ class Benchmark {
 
         if (systemInfo) {
             result['sysinfo']['time'] = new Date().toISOString();
-            result['sysinfo']['node_version'] = Deno.version.deno;
+            result['sysinfo']['deno_version'] = Deno.version.deno;
             result['sysinfo']['platform'] = Deno.build.os;
             result['sysinfo']['server_name'] = Deno.env.get('HOSTNAME') || 'unknown';
         }
