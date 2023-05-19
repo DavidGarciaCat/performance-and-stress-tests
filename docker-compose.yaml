@@ -28,3 +28,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8004:8004
+
+  golang:
+    build:
+      context: ./golang/
+      dockerfile: Dockerfile
+    ports:
+      - 8005:8005

@@ -9,6 +9,7 @@ This repository contains the same code in different programming languages:
 - (HTTP Port 8002) Python
 - (HTTP Port 8003) PHP
 - (HTTP Port 8004) TypeScript powered by Deno
+- (HTTP Port 8005) GO
 
 ```bash
 # Start the Docker containers
@@ -22,6 +23,8 @@ All the containers have the same accessible URLs:
 - `GET /benchmark` runs several operations from several types of processing, including `maths`, `string processing`, `loops` and `conditionals`; then returns the results of each test suite in seconds
 
 > **PLEASE NOTE** Python does not have (in the version I used) four of the mathematical operations during the Benchmark test suite.
+
+> **WARNING** I have just started to work on the GoLang version. For now, the only URI available is `GET /`; the other ones will be implemented as soon as I have some time to do it.
 
 ## Response time
 
@@ -141,6 +144,17 @@ $ time curl -o response.json http://localhost:8004/benchmark
 0.01s system
    1% cpu
 1.150 total
+```
+
+### GO
+
+```bash
+$ time curl -o response.json http://localhost:8005/
+
+0.00s user
+0.02s system
+  52% cpu
+0.054 total
 ```
 
 ## Stress tests
@@ -324,6 +338,22 @@ Running 30s test @ http://localhost:8004/benchmark
   Socket errors: connect 157, read 102, write 0, timeout 0
 Requests/sec:      0.00
 Transfer/sec:       0.00B
+```
+
+### GO
+
+```bash
+$ wrk -t12 -c400 -d30s http://localhost:8005/
+
+Running 30s test @ http://localhost:8005/
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.94ms    3.22ms  58.38ms   84.02%
+    Req/Sec     3.38k     1.55k    7.17k    62.58%
+  1213271 requests in 30.06s, 165.46MB read
+  Socket errors: connect 157, read 100, write 0, timeout 0
+Requests/sec:  40361.98
+Transfer/sec:      5.50MB
 ```
 
 ## HTTP Response
