@@ -20,7 +20,7 @@ services:
       context: ./php/
       dockerfile: Dockerfile
     ports:
-      - 8003:8003
+      - 8003:80
 
   deno:
     build:

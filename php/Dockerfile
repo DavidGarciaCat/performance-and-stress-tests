@@ -1,10 +1,8 @@
-FROM php:8.2
+FROM php:8.2-apache
 
 WORKDIR /var/www/html
 
-COPY benchmark.php .
-COPY server.php .
+COPY benchmark.php /var/www/html/benchmark.php
+COPY server.php /var/www/html/index.php
 
 EXPOSE 8003
-
-CMD ["php", "-S", "0.0.0.0:8003", "server.php"]
